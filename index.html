@@ -28,6 +28,8 @@
             color: var(--color-deep-navy);
             overflow-x: hidden;
             background: var(--color-white);
+            word-break: keep-all;
+            overflow-wrap: break-word;
         }
 
         /* 네비게이션 */
@@ -64,6 +66,10 @@
             letter-spacing: -0.02em;
         }
 
+        .logo img {
+            height: 90px; /* 로고 이미지 크기 조정 */
+        }
+        
         .nav-links {
             display: flex;
             list-style: none;
@@ -763,9 +769,11 @@
 <body>
     <nav id="navbar">
         <div class="nav-container">
-            <div class="logo">Value Prism</div>
+            <a href="#home" class="logo">
+                <img src="valueprism_logo_type2.png" alt="Value Prism Logo">
+            </a>
             <ul class="nav-links">
-                <li><a href="#value-prism">Value Prism</a></li>
+                <li><a href="#value-prism">회사소개</a></li>
                 <li><a href="#services">브랜딩 & 마케팅</a></li>
                 <li><a href="#packages">솔루션 패키지</a></li>
                 <li><a href="#column">인사이트 칼럼</a></li>
@@ -776,8 +784,8 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1 class="main-title">병원 전문 마케팅의<br>완벽한 해답, Value Prism</h1>
-            <p class="subtitle">우리는 병원의 성공을 디자인합니다.</p>
+            <h1 class="main-title">병원마케팅의 차별화된 해법,<br>ValuePrism</h1>
+            <p class="subtitle">병원의 고유한 가치를 브랜드로 구현합니다.</p>
             <p class="description">
                 환자들의 마음을 움직이는 브랜딩부터<br>
                 성장하는 병원의 비밀, 데이터 기반의 마케팅까지.
@@ -791,20 +799,20 @@
     
     <section id="value-prism" class="section value-prism">
         <div class="container">
-            <h2 class="section-title fade-in">Value Prism</h2>
-            <p class="section-subtitle fade-in">병원 성장을 위한 통합 솔루션을 제공합니다.</p>
+            <h2 class="section-title fade-in">ValuePrism</h2>
+            <p class="section-subtitle fade-in">신뢰를 얻는 가치 있는 브랜딩. 병원만의 고유한 가치와 철학을 깊이 분석하고, 환자가 신뢰하고 선택할 수 있는 브랜딩과 마케팅 전략을 설계합니다.</p>
             
             <div class="intro-grid">
                 <div class="intro-item fade-in">
-                    <h3>회사 개요</h3>
-                    <p>Value Prism은 오직 병원에 특화된 브랜딩 및 마케팅 전문 회사입니다. 일반 기업 마케팅과 다른 병원만의 특성을 깊이 이해하고 있습니다.</p>
+                    <h3>오직 병원전문</h3>
+                    <p>ValuePrism은 오직 병원에 특화된 브랜딩 및 마케팅 전문 회사입니다. 일반 기업 마케팅과 다른 병원만의 특성을 깊이 이해하고 있습니다.</p>
                 </div>
                 <div class="intro-item fade-in">
-                    <h3>우리가 하는 일</h3>
+                    <h3>가치를 브랜드로 마케팅을 신뢰로</h3>
                     <p>병원 성장을 위한 '안전한 마케팅'과 '정확한 브랜딩'을 통해 잠재 환자를 확보하고 신뢰를 구축합니다.</p>
                 </div>
                 <div class="intro-item fade-in">
-                    <h3>차별화 포인트</h3>
+                    <h3>진정한 마케팅 파트너</h3>
                     <p>의료광고법을 100% 준수하며, 병원 운영 흐름과 환자 심리를 기반으로 한 맞춤형 마케팅 전략을 제공합니다.</p>
                 </div>
             </div>
@@ -1046,7 +1054,30 @@
         // 폼 제출 처리
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('상담 신청이 완료되었습니다!\n빠른 시간 내에 연락드리겠습니다.');
+            
+            // 커스텀 알림창 UI 구현
+            const modal = document.createElement('div');
+            modal.style.position = 'fixed';
+            modal.style.top = '50%';
+            modal.style.left = '50%';
+            modal.style.transform = 'translate(-50%, -50%)';
+            modal.style.padding = '30px';
+            modal.style.backgroundColor = 'white';
+            modal.style.borderRadius = '15px';
+            modal.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
+            modal.style.zIndex = '10000';
+            modal.style.textAlign = 'center';
+            modal.innerHTML = `
+                <h3 style="color: var(--color-deep-navy); margin-bottom: 20px;">신청 완료!</h3>
+                <p style="color: var(--color-dark-gray); line-height: 1.6;">
+                    상담 신청이 완료되었습니다.<br>
+                    빠른 시간 내에 연락드리겠습니다.
+                </p>
+                <button onclick="this.parentNode.remove()" style="margin-top: 25px; padding: 12px 30px; background-color: var(--color-prism-blue); color: var(--color-white); border: none; border-radius: 8px; cursor: pointer; font-weight: 700; transition: background-color 0.3s ease;">확인</button>
+            `;
+            document.body.appendChild(modal);
+
+            // 폼 초기화
             this.reset();
         });
     </script>
