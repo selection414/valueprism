@@ -3,8 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Value Prism - 병원 전문 마케팅 대행사</title>
+    <title>병원 전문 마케팅 대행사 - Value Prism</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+
+        :root {
+            --color-deep-navy: #0A1A2F;
+            --color-white: #FFFFFF;
+            --color-prism-blue: #1F6FEB;
+            --color-light-gray: #F2F4F7;
+            --color-prism-orange: #FF6F3C;
+            --color-dark-gray: #4A5568;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,27 +23,29 @@
         }
 
         body {
-            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--color-deep-navy);
             overflow-x: hidden;
+            background: var(--color-white);
         }
 
         /* 네비게이션 */
         nav {
-            background: rgba(255, 255, 255, 0.98);
+            background: var(--color-deep-navy);
             backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            padding: 1.2rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            background: var(--color-deep-navy);
         }
 
         .nav-container {
@@ -45,9 +58,10 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #1e3a8a;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-white);
+            letter-spacing: -0.02em;
         }
 
         .nav-links {
@@ -58,15 +72,15 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #333;
+            color: var(--color-white);
             font-weight: 500;
             font-size: 1rem;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             position: relative;
         }
 
         .nav-links a:hover {
-            color: #1e3a8a;
+            color: var(--color-prism-blue);
         }
 
         .nav-links a::after {
@@ -76,7 +90,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #1e3a8a;
+            background: var(--color-prism-blue);
             transition: width 0.3s ease;
         }
 
@@ -87,24 +101,43 @@
         /* 히어로 섹션 */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background: linear-gradient(135deg, var(--color-deep-navy) 0%, #173252 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
             padding: 0 2rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 60%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
         }
 
         .hero-content {
-            max-width: 800px;
-            animation: fadeInUp 1s ease-out;
+            max-width: 1000px;
+            animation: fadeInUp 1.2s ease-out;
+            position: relative;
+            z-index: 2;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(60px);
             }
             to {
                 opacity: 1;
@@ -112,428 +145,483 @@
             }
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            color: #1e3a8a;
-            font-weight: 700;
-            line-height: 1.2;
+        .hero .main-title {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            color: var(--color-white);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .hero .subtitle {
-            font-size: 1.8rem;
-            color: #64748b;
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            color: #475569;
-            line-height: 1.8;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 15px 35px;
-            background: #1e3a8a;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: 2px solid #1e3a8a;
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: #1e3a8a;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(30, 58, 138, 0.2);
-        }
-
-        .cta-button.secondary {
-            background: transparent;
-            color: #1e3a8a;
-            border: 2px solid #1e3a8a;
-        }
-
-        .cta-button.secondary:hover {
-            background: #1e3a8a;
-            color: white;
-        }
-
-        /* 섹션 공통 스타일 */
-        .section {
-            padding: 6rem 0;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
-        }
-
-        .section h2 {
-            text-align: center;
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
+            font-size: 2.2rem;
+            color: var(--color-light-gray);
+            margin-bottom: 1.5rem;
             font-weight: 700;
+            letter-spacing: -0.02em;
         }
 
-        .section .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #64748b;
-            margin-bottom: 4rem;
-            max-width: 600px;
+        .hero .description {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: var(--color-light-gray);
+            line-height: 1.7;
+            font-weight: 400;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--color-prism-orange);
+            color: var(--color-white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            letter-spacing: -0.01em;
+            box-shadow: 0 8px 30px rgba(255, 111, 60, 0.4);
+            text-transform: uppercase;
+        }
+
+        .hero-cta:hover {
+            background: #FF8A5E;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 111, 60, 0.6);
+        }
+
+        .hero-cta.secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+            box-shadow: none;
+        }
+
+        .hero-cta.secondary:hover {
+            background: var(--color-white);
+            color: var(--color-deep-navy);
+            box-shadow: 0 12px 40px rgba(255, 255, 255, 0.4);
+        }
+
+        /* 섹션 공통 스타일 */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            color: var(--color-deep-navy);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--color-dark-gray);
+            margin-bottom: 5rem;
+            font-weight: 400;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-divider {
+            width: 80px;
+            height: 4px;
+            background: var(--color-prism-blue);
+            margin: 1rem auto 3rem;
+        }
+
         /* Value Prism 섹션 */
         .value-prism {
-            background: white;
+            background: var(--color-white);
+            text-align: center;
         }
-
-        .value-content {
+        .intro-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
-            margin-bottom: 4rem;
+            text-align: left;
         }
-
-        .value-card {
-            background: #f8fafc;
-            padding: 2.5rem;
-            border-radius: 12px;
-            border-left: 4px solid #1e3a8a;
-            transition: all 0.3s ease;
+        .intro-item {
+            padding: 2rem;
+            border-radius: 15px;
+            background: var(--color-light-gray);
         }
-
-        .value-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .value-card h3 {
-            font-size: 1.5rem;
-            color: #1e3a8a;
+        .intro-item h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-deep-navy);
             margin-bottom: 1rem;
-            font-weight: 600;
         }
-
-        .value-card p {
-            color: #475569;
-            line-height: 1.7;
-            font-size: 1.05rem;
+        .intro-item p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--color-dark-gray);
         }
 
         /* 브랜딩 & 마케팅 섹션 */
         .services {
-            background: #f8fafc;
+            background: var(--color-light-gray);
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
         .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 12px;
+            background: var(--color-white);
+            padding: 3rem;
+            border-radius: 20px;
             text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            color: var(--color-deep-navy);
+            border: 2px solid transparent;
         }
 
         .service-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: #1e3a8a;
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(31, 111, 235, 0.1), transparent);
+            transition: left 0.8s ease;
         }
 
         .service-card:hover::before {
-            transform: scaleX(1);
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-prism-blue);
         }
 
         .service-icon {
             width: 80px;
             height: 80px;
-            background: #1e3a8a;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
+            background: var(--color-prism-blue);
+            border-radius: 15px;
+            margin: 0 auto 2rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: var(--color-white);
             font-size: 2rem;
+            font-weight: bold;
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .service-card h3 {
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-            font-size: 1.3rem;
-            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--color-deep-navy);
+            font-size: 1.4rem;
+            font-weight: 700;
         }
 
         .service-card p {
-            color: #64748b;
-            line-height: 1.6;
+            color: var(--color-dark-gray);
+            line-height: 1.7;
             font-size: 1rem;
         }
 
         /* 솔루션 패키지 섹션 */
         .packages {
-            background: white;
+            background: var(--color-white);
+            color: var(--color-deep-navy);
+        }
+
+        .packages .section-title {
+            color: var(--color-deep-navy);
+        }
+
+        .packages .section-subtitle {
+            color: var(--color-dark-gray);
         }
 
         .packages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .package-card {
-            background: white;
-            padding: 3rem 2rem;
-            border-radius: 16px;
+            background: var(--color-light-gray);
+            color: var(--color-deep-navy);
+            padding: 4rem 3rem;
+            border-radius: 25px;
             text-align: center;
-            border: 2px solid #e2e8f0;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
+            border: 3px solid transparent;
         }
 
         .package-card.featured {
-            border-color: #1e3a8a;
-            transform: scale(1.05);
+            background: var(--color-prism-blue);
+            transform: scale(1.1);
+            border-color: #3E8BFF;
+            box-shadow: 0 25px 60px rgba(31, 111, 235, 0.3);
+            color: var(--color-white);
         }
 
         .package-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            transform: translateY(-15px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.2);
         }
 
         .package-card.featured:hover {
-            transform: translateY(-10px) scale(1.05);
+            transform: translateY(-15px) scale(1.1);
         }
 
         .package-name {
             font-size: 1.8rem;
-            font-weight: 700;
-            color: #1e3a8a;
-            margin-bottom: 1rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
         }
 
         .package-price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1e3a8a;
-            margin-bottom: 2rem;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+            letter-spacing: -0.03em;
         }
 
         .package-features {
             list-style: none;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
+            text-align: left;
         }
 
         .package-features li {
-            padding: 0.5rem 0;
-            color: #475569;
-            font-size: 1rem;
+            padding: 1rem 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding-left: 2rem;
         }
 
         .package-features li:before {
             content: '✓';
-            color: #1e3a8a;
-            font-weight: bold;
-            margin-right: 0.5rem;
+            position: absolute;
+            left: 0;
+            color: var(--color-prism-blue);
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+
+        .package-card.featured .package-features li:before {
+            color: var(--color-prism-orange);
+        }
+        
+        .package-card.featured .package-features li {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .package-card.featured .package-features li,
+        .package-card.featured .package-name,
+        .package-card.featured .package-price {
+            color: var(--color-white);
         }
 
         .package-button {
             display: inline-block;
-            padding: 12px 30px;
-            background: transparent;
-            color: #1e3a8a;
+            padding: 18px 40px;
+            background: var(--color-deep-navy);
+            color: var(--color-white);
             text-decoration: none;
-            border: 2px solid #1e3a8a;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
             width: 100%;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
         }
 
         .package-card.featured .package-button {
-            background: #1e3a8a;
-            color: white;
+            background: var(--color-prism-orange);
+            color: var(--color-white);
         }
 
         .package-button:hover {
-            background: #1e3a8a;
-            color: white;
+            background: var(--color-prism-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(31, 111, 235, 0.3);
         }
 
         .package-card.featured .package-button:hover {
-            background: transparent;
-            color: #1e3a8a;
+            background: #FF8A5E;
+            box-shadow: 0 10px 30px rgba(255, 111, 60, 0.4);
         }
 
         /* 인사이트 칼럼 섹션 */
-        .insights {
-            background: #f8fafc;
+        .column {
+            background: var(--color-white);
+            text-align: center;
         }
-
-        .insights-grid {
+        .column-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: 2.5rem;
         }
-
-        .insight-card {
-            background: white;
-            border-radius: 12px;
+        .column-card {
+            background: var(--color-light-gray);
+            border-radius: 15px;
             overflow: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
         }
-
-        .insight-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        .column-card:hover {
+            transform: translateY(-10px);
         }
-
-        .insight-image {
+        .column-card-img {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            object-fit: cover;
+            background-color: var(--color-dark-gray);
+            color: var(--color-white);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 2rem;
         }
-
-        .insight-content {
-            padding: 1.5rem;
+        .column-card-content {
+            padding: 2rem;
+            text-align: left;
         }
-
-        .insight-date {
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
+        .column-card-content h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-deep-navy);
+            margin-bottom: 1rem;
         }
-
-        .insight-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #1e3a8a;
-            margin-bottom: 0.5rem;
-            line-height: 1.4;
+        .column-card-content p {
+            font-size: 1rem;
+            color: var(--color-dark-gray);
         }
-
-        .insight-excerpt {
-            color: #64748b;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .insights-more {
-            text-align: center;
-        }
-
         .more-button {
             display: inline-block;
-            padding: 12px 30px;
-            background: transparent;
-            color: #1e3a8a;
+            padding: 15px 30px;
+            background: var(--color-prism-orange);
+            color: var(--color-white);
             text-decoration: none;
-            border: 2px solid #1e3a8a;
             border-radius: 8px;
-            font-weight: 600;
+            font-weight: 700;
+            margin-top: 3rem;
             transition: all 0.3s ease;
         }
-
         .more-button:hover {
-            background: #1e3a8a;
-            color: white;
+            background: #FF8A5E;
         }
 
         /* 함께하기 섹션 */
         .contact {
-            background: white;
+            background: var(--color-prism-blue);
+            color: var(--color-white);
+            text-align: center;
         }
 
-        .contact-content {
+        .contact .section-title {
+            color: var(--color-white);
+            margin-bottom: 3rem;
+        }
+
+        .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 5rem;
             align-items: start;
+            margin-top: 4rem;
+        }
+        
+        .contact-info,
+        .contact-map {
+            text-align: left;
         }
 
         .contact-form {
-            background: #f8fafc;
-            padding: 3rem;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .contact-form h3 {
-            font-size: 1.8rem;
-            color: #1e3a8a;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--color-white);
+            font-weight: 700;
         }
 
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: #374151;
+            margin-bottom: 0.8rem;
+            color: var(--color-light-gray);
             font-weight: 500;
+            font-size: 1.1rem;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            transition: all 0.3s ease;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #1e3a8a;
+            border-color: var(--color-prism-orange);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .form-group textarea {
@@ -543,131 +631,96 @@
 
         .submit-button {
             width: 100%;
-            padding: 15px;
-            background: #1e3a8a;
-            color: white;
+            padding: 18px;
+            background: var(--color-white);
+            color: var(--color-prism-orange);
             border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
         }
 
         .submit-button:hover {
-            background: #1e40af;
-            transform: translateY(-2px);
+            background: var(--color-light-gray);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
         }
 
-        .contact-info {
-            padding: 2rem 0;
-        }
-
-        .contact-info h3 {
-            font-size: 1.8rem;
-            color: #1e3a8a;
+        .contact-info h3,
+        .contact-map h3 {
+            font-size: 2rem;
             margin-bottom: 2rem;
-            font-weight: 600;
+            color: var(--color-white);
+            font-weight: 700;
         }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #f8fafc;
-            border-radius: 8px;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: #1e3a8a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            margin-right: 1rem;
-        }
-
-        .contact-details h4 {
-            color: #1e3a8a;
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-details p {
-            color: #64748b;
-            font-size: 0.95rem;
-        }
-
+        
         .map-container {
             width: 100%;
-            height: 300px;
-            background: #e2e8f0;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            font-size: 1.1rem;
-            margin-top: 2rem;
+            height: 400px;
+            background: var(--color-dark-gray);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
         }
+        .map-info {
+            font-size: 1.1rem;
+            color: var(--color-light-gray);
+            line-height: 1.8;
+        }
+
 
         /* 푸터 */
         footer {
-            background: #1e3a8a;
-            color: white;
-            padding: 3rem 0 2rem;
+            background: var(--color-deep-navy);
+            color: var(--color-light-gray);
+            padding: 4rem 0 2rem;
+            text-align: center;
         }
 
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
         }
 
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--color-prism-blue);
+            margin-bottom: 2rem;
         }
 
-        .footer-section p,
-        .footer-section a {
-            color: #cbd5e1;
-            text-decoration: none;
-            line-height: 1.6;
-        }
-
-        .footer-section a:hover {
-            color: white;
+        .footer-text {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .footer-bottom {
-            border-top: 1px solid #334155;
-            margin-top: 2rem;
+            border-top: 1px solid #173252;
+            margin-top: 3rem;
             padding-top: 2rem;
-            text-align: center;
-            color: #94a3b8;
+            font-size: 0.9rem;
         }
 
         /* 반응형 디자인 */
         @media (max-width: 768px) {
-            .hero h1 {
+            .hero .main-title {
+                font-size: 3rem;
+            }
+
+            .section-title {
                 font-size: 2.5rem;
             }
-
-            .hero .subtitle {
-                font-size: 1.4rem;
-            }
-
-            .contact-content {
+            
+            .contact-grid {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
             .nav-links {
@@ -675,35 +728,29 @@
             }
 
             .section {
-                padding: 4rem 1rem;
+                padding: 4rem 0;
             }
 
-            .packages-grid {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
             }
 
             .package-card.featured {
                 transform: none;
             }
-
-            .package-card.featured:hover {
-                transform: translateY(-10px);
-            }
-
-            .footer-content {
+            .packages-grid {
                 grid-template-columns: 1fr;
             }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
         }
-
         /* 스크롤 애니메이션 */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(50px);
             transition: all 0.8s ease;
         }
 
@@ -714,288 +761,242 @@
     </style>
 </head>
 <body>
-    <!-- 네비게이션 -->
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">Value Prism</div>
             <ul class="nav-links">
-                <li><a href="#home">홈</a></li>
                 <li><a href="#value-prism">Value Prism</a></li>
                 <li><a href="#services">브랜딩 & 마케팅</a></li>
                 <li><a href="#packages">솔루션 패키지</a></li>
-                <li><a href="#insights">인사이트 칼럼</a></li>
+                <li><a href="#column">인사이트 칼럼</a></li>
                 <li><a href="#contact">함께하기</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- 히어로 섹션 -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>병원은 진료에만 집중하세요</h1>
-            <p class="subtitle">성장 전략은 저희가 책임집니다</p>
-            <p>의료광고법을 완벽히 준수하면서도 확실한 성과를 만드는<br>병원 전문 브랜딩·마케팅 파트너, Value Prism입니다.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="cta-button">무료 컨설팅 신청</a>
-                <a href="#packages" class="cta-button secondary">서비스 둘러보기</a>
+            <h1 class="main-title">병원 전문 마케팅의<br>완벽한 해답, Value Prism</h1>
+            <p class="subtitle">우리는 병원의 성공을 디자인합니다.</p>
+            <p class="description">
+                환자들의 마음을 움직이는 브랜딩부터<br>
+                성장하는 병원의 비밀, 데이터 기반의 마케팅까지.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="hero-cta">무료 컨설팅 신청</a>
+                <a href="#services" class="hero-cta secondary">서비스 살펴보기</a>
             </div>
         </div>
     </section>
-
-    <!-- Value Prism 섹션 -->
+    
     <section id="value-prism" class="section value-prism">
-        <h2 class="fade-in">Value Prism</h2>
-        <p class="section-subtitle fade-in">병원 성장의 새로운 기준을 제시합니다</p>
-        
-        <div class="value-content">
-            <div class="value-card fade-in">
-                <h3>🏥 회사 개요</h3>
-                <p>저희는 병원 전문 브랜딩·마케팅 회사입니다. 의료진의 전문성과 병원의 가치를 환자에게 올바르게 전달하여, 지속 가능한 성장을 이끌어내는 것이 저희의 사명입니다.</p>
-            </div>
+        <div class="container">
+            <h2 class="section-title fade-in">Value Prism</h2>
+            <p class="section-subtitle fade-in">병원 성장을 위한 통합 솔루션을 제공합니다.</p>
             
-            <div class="value-card fade-in">
-                <h3>🎯 우리가 하는 일</h3>
-                <p>병원 성장을 위한 "안전한 마케팅 + 브랜딩"을 제공합니다. 의료광고법을 철저히 준수하면서도 환자들에게 병원의 진정한 가치를 전달하여 신뢰할 수 있는 브랜드를 구축합니다.</p>
-            </div>
-            
-            <div class="value-card fade-in">
-                <h3>⭐ 차별화 포인트</h3>
-                <p><strong>의료광고법 준수 100%</strong><br>
-                병원 운영 흐름과 환자 심리를 깊이 이해한 전략으로, 법적 리스크 없이 확실한 성과를 보장합니다. 단순한 광고가 아닌, 환자와의 진정한 소통을 만들어냅니다.</p>
+            <div class="intro-grid">
+                <div class="intro-item fade-in">
+                    <h3>회사 개요</h3>
+                    <p>Value Prism은 오직 병원에 특화된 브랜딩 및 마케팅 전문 회사입니다. 일반 기업 마케팅과 다른 병원만의 특성을 깊이 이해하고 있습니다.</p>
+                </div>
+                <div class="intro-item fade-in">
+                    <h3>우리가 하는 일</h3>
+                    <p>병원 성장을 위한 '안전한 마케팅'과 '정확한 브랜딩'을 통해 잠재 환자를 확보하고 신뢰를 구축합니다.</p>
+                </div>
+                <div class="intro-item fade-in">
+                    <h3>차별화 포인트</h3>
+                    <p>의료광고법을 100% 준수하며, 병원 운영 흐름과 환자 심리를 기반으로 한 맞춤형 마케팅 전략을 제공합니다.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 브랜딩 & 마케팅 섹션 -->
     <section id="services" class="section services">
-        <h2 class="fade-in">브랜딩 & 마케팅</h2>
-        <p class="section-subtitle fade-in">병원의 모든 마케팅 니즈를 한 번에 해결합니다</p>
-        
-        <div class="services-grid">
-            <div class="service-card fade-in">
-                <div class="service-icon">🎨</div>
-                <h3>브랜딩</h3>
-                <p>병원만의 고유한 아이덴티티를 정립하고, 환자들에게 신뢰감을 주는 브랜드 이미지를 구축합니다. 로고부터 전체적인 브랜드 가이드라인까지 체계적으로 설계합니다.</p>
-            </div>
+        <div class="container">
+            <h2 class="section-title fade-in">브랜딩 & 마케팅</h2>
+            <p class="section-subtitle fade-in">병원 성장의 모든 과정을 함께합니다.</p>
             
-            <div class="service-card fade-in">
-                <div class="service-icon">💻</div>
-                <h3>온라인 마케팅</h3>
-                <p>블로그·홈페이지 운영부터 검색광고, SNS 마케팅까지 통합 관리합니다. 환자들이 병원을 쉽게 찾고 신뢰할 수 있도록 온라인 접점을 최적화합니다.</p>
-            </div>
-            
-            <div class="service-card fade-in">
-                <div class="service-icon">📱</div>
-                <h3>콘텐츠 제작</h3>
-                <p>환자 눈높이에 맞춘 카드뉴스, 영상, 글 콘텐츠를 제작합니다. 어려운 의학 정보를 쉽고 이해하기 쉽게 전달하여 환자와의 소통을 강화합니다.</p>
-            </div>
-            
-            <div class="service-card fade-in">
-                <div class="service-icon">⭐</div>
-                <h3>환자 경험 관리</h3>
-                <p>환자 후기와 리뷰를 체계적으로 관리하고, 상담 프로세스를 최적화하여 환자 만족도를 높입니다. 첫 방문부터 재방문까지 전 과정을 케어합니다.</p>
-            </div>
-            
-            <div class="service-card fade-in">
-                <div class="service-icon">📊</div>
-                <h3>성과 관리</h3>
-                <p>월 단위 데이터 분석 보고서와 마케팅 효과 분석을 통해 투명하고 객관적인 성과를 확인하실 수 있습니다. 지속적인 개선으로 더 나은 결과를 만들어냅니다.</p>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">✨</div>
+                    <h3>브랜딩</h3>
+                    <p>병원 고유의 아이덴티티를 명확하게 정립하여 환자들에게 깊은 인상을 남깁니다.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">💻</div>
+                    <h3>온라인 마케팅</h3>
+                    <p>블로그, 홈페이지 제작부터 검색광고, SNS 광고까지 통합적인 온라인 마케팅을 진행합니다.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">✍️</div>
+                    <h3>콘텐츠 제작</h3>
+                    <p>환자의 눈높이에 맞춰 제작한 카드뉴스, 영상, 전문 칼럼 등으로 소통을 강화합니다.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">🤝</div>
+                    <h3>환자 경험 관리</h3>
+                    <p>환자 후기 및 리뷰를 체계적으로 관리하고, 상담 프로세스를 최적화하여 만족도를 높입니다.</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">📈</div>
+                    <h3>성과 관리</h3>
+                    <p>월 단위 상세 데이터 리포트와 ROI(투자 대비 효과) 분석을 통해 마케팅 성과를 투명하게 공유합니다.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 솔루션 패키지 섹션 -->
     <section id="packages" class="section packages">
-        <h2 class="fade-in">솔루션 패키지</h2>
-        <p class="section-subtitle fade-in">병원 규모와 필요에 맞는 최적의 솔루션을 선택하세요</p>
-        
-        <div class="packages-grid">
-            <div class="package-card fade-in">
-                <div class="package-name">심플 패키지</div>
-                <div class="package-price">300만원</div>
-                <ul class="package-features">
-                    <li>기본 브랜드 가이드라인 설정</li>
-                    <li>홈페이지 제작 및 최적화</li>
-                    <li>기본 SEO 설정</li>
-                    <li>월 2회 콘텐츠 제작</li>
-                    <li>기본 성과 리포트</li>
-                </ul>
-                <a href="#contact" class="package-button">상담 신청</a>
-            </div>
+        <div class="container">
+            <h2 class="section-title fade-in">솔루션 패키지</h2>
+            <p class="section-subtitle fade-in">병원 규모와 목표에 맞는 최적의 마케팅 솔루션</p>
             
-            <div class="package-card featured fade-in">
-                <div class="package-name">타깃 패키지</div>
-                <div class="package-price">500만원</div>
-                <ul class="package-features">
-                    <li>전문 브랜딩 전략 수립</li>
-                    <li>홈페이지 + 블로그 통합 관리</li>
-                    <li>검색광고 + SNS 마케팅</li>
-                    <li>주 1회 콘텐츠 제작</li>
-                    <li>환자 리뷰 관리 시스템</li>
-                    <li>상세 성과 분석 리포트</li>
-                </ul>
-                <a href="#contact" class="package-button">상담 신청</a>
-            </div>
-            
-            <div class="package-card fade-in">
-                <div class="package-name">고급 패키지</div>
-                <div class="package-price">1000만원</div>
-                <ul class="package-features">
-                    <li>프리미엄 브랜드 아이덴티티 구축</li>
-                    <li>멀티 플랫폼 통합 마케팅</li>
-                    <li>전문 영상 콘텐츠 제작</li>
-                    <li>개인 맞춤 상담 프로세스</li>
-                    <li>실시간 성과 모니터링</li>
-                    <li>전담 마케팅 매니저 배정</li>
-                    <li>오프라인 브랜딩 지원</li>
-                </ul>
-                <a href="#contact" class="package-button">상담 신청</a>
+            <div class="packages-grid">
+                <div class="package-card fade-in">
+                    <div class="package-name">심플패키지</div>
+                    <div class="package-price">300만원</div>
+                    <ul class="package-features">
+                        <li>기본 브랜딩 설정</li>
+                        <li>홈페이지 제작</li>
+                        <li>SEO 기본 설정</li>
+                        <li>월 2회 블로그 포스팅</li>
+                        <li>기본 성과 리포트</li>
+                    </ul>
+                    <a href="#contact" class="package-button">상담 신청</a>
+                </div>
+                
+                <div class="package-card featured fade-in">
+                    <div class="package-name">타깃패키지</div>
+                    <div class="package-price">500만원</div>
+                    <ul class="package-features">
+                        <li>전문 브랜딩 전략 수립</li>
+                        <li>통합 디지털 마케팅</li>
+                        <li>검색광고 + SNS 마케팅</li>
+                        <li>주 1회 콘텐츠 제작</li>
+                        <li>의료심의 완벽 대응</li>
+                        <li>리뷰 관리 시스템</li>
+                        <li>월간 상세 성과 분석</li>
+                    </ul>
+                    <a href="#contact" class="package-button">상담 신청</a>
+                </div>
+                
+                <div class="package-card fade-in">
+                    <div class="package-name">고급패키지</div>
+                    <div class="package-price">1000만원</div>
+                    <ul class="package-features">
+                        <li>프리미엄 브랜드 구축</li>
+                        <li>멀티채널 마케팅</li>
+                        <li>전문 영상 콘텐츠 제작</li>
+                        <li>24/7 위기관리 대응</li>
+                        <li>전담 매니저 배정</li>
+                        <li>실시간 성과 모니터링</li>
+                        <li>오프라인 브랜딩 지원</li>
+                        <li>VIP 컨설팅 서비스</li>
+                    </ul>
+                    <a href="#contact" class="package-button">상담 신청</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 인사이트 칼럼 섹션 -->
-    <section id="insights" class="section insights">
-        <h2 class="fade-in">인사이트 칼럼</h2>
-        <p class="section-subtitle fade-in">병원 마케팅의 최신 트렌드와 성공 사례를 공유합니다</p>
-        
-        <div class="insights-grid">
-            <div class="insight-card fade-in">
-                <div class="insight-image">📈</div>
-                <div class="insight-content">
-                    <div class="insight-date">2025.09.08</div>
-                    <div class="insight-title">의료광고법 개정, 병원 마케팅 전략 변화는?</div>
-                    <div class="insight-excerpt">최근 의료광고법 개정으로 인한 병원 마케팅 환경의 변화와 대응 전략에 대해 알아봅니다. 법적 리스크를 최소화하면서도...</div>
-                </div>
+    <section id="column" class="section column">
+        <div class="container">
+            <h2 class="section-title fade-in">인사이트 칼럼</h2>
+            <p class="section-subtitle fade-in">병원 마케팅의 최신 트렌드와 성공 노하우를 공유합니다.</p>
+
+            <div class="column-grid">
+                <a href="#" class="column-card fade-in">
+                    <div class="column-card-img">이미지 영역</div>
+                    <div class="column-card-content">
+                        <h4>2025년 주목해야 할 병원 마케팅 트렌드 3가지</h4>
+                        <p>의료 시장의 변화에 맞춰 병원 마케팅 전략을 어떻게 수정해야 할지 전문가의 시각으로 분석합니다.</p>
+                    </div>
+                </a>
+                <a href="#" class="column-card fade-in">
+                    <div class="column-card-img">이미지 영역</div>
+                    <div class="column-card-content">
+                        <h4>성공하는 병원은 환자 리뷰를 이렇게 관리합니다</h4>
+                        <p>악성 리뷰 대응부터 긍정적인 후기 유도까지, 환자 경험 관리의 모든 것을 알려드립니다.</p>
+                    </div>
+                </a>
+                <a href="#" class="column-card fade-in">
+                    <div class="column-card-img">이미지 영역</div>
+                    <div class="column-card-content">
+                        <h4>의료법을 준수하며 효과 내는 광고 전략</h4>
+                        <p>복잡한 의료광고법, 더 이상 두려워하지 마세요. 안전하면서도 효과적인 광고 노하우를 공개합니다.</p>
+                    </div>
+                </a>
             </div>
-            
-            <div class="insight-card fade-in">
-                <div class="insight-image">👥</div>
-                <div class="insight-content">
-                    <div class="insight-date">2025.09.05</div>
-                    <div class="insight-title">환자 리뷰 관리, 이렇게 하면 성공한다</div>
-                    <div class="insight-excerpt">온라인 리뷰가 병원 선택에 미치는 영향력이 커지고 있습니다. 체계적인 리뷰 관리 시스템 구축 방법을 소개합니다...</div>
-                </div>
-            </div>
-            
-            <div class="insight-card fade-in">
-                <div class="insight-image">💡</div>
-                <div class="insight-content">
-                    <div class="insight-date">2025.09.01</div>
-                    <div class="insight-title">소규모 병원도 성공하는 브랜딩 전략</div>
-                    <div class="insight-excerpt">큰 예산 없이도 효과적인 브랜딩을 할 수 있는 방법들을 실제 성공 사례와 함께 분석해보겠습니다...</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="insights-more">
-            <a href="https://blog.naver.com" target="_blank" class="more-button">더 많은 칼럼 보기</a>
+            <a href="https://blog.naver.com/" target="_blank" class="more-button fade-in">블로그 더보기</a>
         </div>
     </section>
 
-    <!-- 함께하기 섹션 -->
     <section id="contact" class="section contact">
-        <h2 class="fade-in">함께하기</h2>
-        <p class="section-subtitle fade-in">병원의 성장 파트너가 되어드리겠습니다</p>
-        
-        <div class="contact-content">
-            <div class="contact-form fade-in">
-                <h3>무료 컨설팅 신청</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="hospital-name">병원명</label>
-                        <input type="text" id="hospital-name" name="hospital-name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="director-name">원장님 성함</label>
-                        <input type="text" id="director-name" name="director-name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">연락처</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="specialty">진료과목</label>
-                        <input type="text" id="specialty" name="specialty" placeholder="예: 내과, 정형외과, 피부과 등">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">문의사항</label>
-                        <textarea id="message" name="message" placeholder="현재 마케팅 고민이나 궁금한 점을 자유롭게 작성해주세요."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="submit-button">무료 컨설팅 신청하기</button>
-                </form>
-            </div>
+        <div class="container">
+            <h2 class="section-title fade-in">진료실 밖 모든 고민,<br>이제 Value Prism에 맡겨주세요.</h2>
             
-            <div class="contact-info fade-in">
-                <h3>오프라인 상담도 환영합니다</h3>
-                <p style="color: #64748b; margin-bottom: 2rem; line-height: 1.6;">
-                    병원 원장님들의 소중한 시간을 위해 직접 방문 상담도 진행하고 있습니다. 
-                    편하신 시간에 언제든 연락주세요.
-                </p>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">📞</div>
-                    <div class="contact-details">
-                        <h4>전화 상담</h4>
-                        <p>02-1234-5678<br>평일 09:00 - 18:00</p>
-                    </div>
+            <div class="contact-grid">
+                <div class="contact-form fade-in">
+                    <h3>무료 컨설팅 신청</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="hospital-name">병원명</label>
+                            <input type="text" id="hospital-name" name="hospital-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="director-name">원장님 성함</label>
+                            <input type="text" id="director-name" name="director-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">연락처</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="specialty">진료과목</label>
+                            <input type="text" id="specialty" name="specialty" placeholder="예: 내과, 정형외과, 피부과">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">문의사항</label>
+                            <textarea id="message" name="message" placeholder="현재 마케팅 고민이나 원하시는 서비스에 대해 자유롭게 작성해주세요."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">무료 상담 신청하기</button>
+                    </form>
                 </div>
                 
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <div class="contact-details">
-                        <h4>이메일 문의</h4>
-                        <p>contact@valueprism.co.kr<br>24시간 접수 가능</p>
+                <div class="contact-map fade-in">
+                    <h3>오시는 길</h3>
+                    <div class="map-container">
+                        <div style="width: 100%; height: 100%; background: #ccc; display: flex; align-items: center; justify-content: center; color: var(--color-deep-navy);">지도 연동 영역</div>
                     </div>
-                </div>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div class="contact-details">
-                        <h4>오프라인 미팅</h4>
-                        <p>서울 강남구 테헤란로 123<br>Value Prism 빌딩 10층</p>
+                    <div class="map-info">
+                        <h4>본사 주소:</h4>
+                        <p>서울 강남구 테헤란로 123 Value Prism 본사 15층</p>
+                        <p>주차 가능하며, 편리한 상담을 위해 사전 방문 예약을 부탁드립니다.</p>
                     </div>
-                </div>
-                
-                <div class="map-container">
-                    <p>🗺️ 네이버 지도 연동 영역<br>(실제 구현시 지도 API 연결)</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 푸터 -->
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>Value Prism</h3>
-                <p>병원 전문 브랜딩·마케팅 파트너</p>
-                <p style="margin-top: 1rem;">안전한 마케팅, 확실한 성과<br>병원의 성장을 함께 만들어갑니다.</p>
+            <div class="footer-logo">Value Prism</div>
+            <div class="footer-text">
+                병원 마케팅 전문 회사 Value Prism<br>
+                진료실 밖 모든 고민의 완벽한 해답
             </div>
-            
-            <div class="footer-section">
-                <h3>서비스</h3>
-                <p><a href="#services">브랜딩 전략</a></p>
-                <p><a href="#services">온라인 마케팅</a></p>
-                <p><a href="#services">콘텐츠 제작</a></p>
-                <p><a href="#services">성과 관리</a></p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Value Prism. All rights reserved. | 사업자등록번호: 123-45-67890</p>
             </div>
-            
-            <div class="footer-section">
-                <h3>연락처</h3>
-                <p>📞 02-1234-5678</p>
-                <p>📧 contact@valueprism.co.kr</p>
-                <p>📍 서울 강남구 테헤란로 123</p>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <p>&copy; 2025 Value Prism. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1027,7 +1028,7 @@
         // 스크롤 애니메이션
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver(function(entries) {
@@ -1045,26 +1046,8 @@
         // 폼 제출 처리
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('상담 신청이 완료되었습니다. 빠른 시간 내에 연락드리겠습니다.');
+            alert('상담 신청이 완료되었습니다!\n빠른 시간 내에 연락드리겠습니다.');
             this.reset();
-        });
-
-        // 패키지 카드 호버 효과
-        document.querySelectorAll('.package-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px)';
-                if (this.classList.contains('featured')) {
-                    this.style.transform = 'translateY(-10px) scale(1.05)';
-                }
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                if (this.classList.contains('featured')) {
-                    this.style.transform = 'scale(1.05)';
-                } else {
-                    this.style.transform = 'translateY(0)';
-                }
-            });
         });
     </script>
 </body>
